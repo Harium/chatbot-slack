@@ -10,7 +10,7 @@ public class SlackMessagePosted implements SlackEvent {
 
     private String messageContent;
 
-    private SlackBot bot;
+    //private SlackBot bot;
 
     private SlackUser user;
 
@@ -25,20 +25,18 @@ public class SlackMessagePosted implements SlackEvent {
     private Map<String, Integer> reactions;
     private ArrayList<SlackAttachment> attachments;
 
-    public SlackMessagePosted(String messageContent, SlackBot bot, SlackUser user, SlackChannel channel, String timestamp, MessageSubType msgSubType) {
+    public SlackMessagePosted(String messageContent, SlackUser user, SlackChannel channel, String timestamp, MessageSubType msgSubType) {
         this.channel = channel;
         this.messageContent = messageContent;
         this.user = user;
-        this.bot = bot;
         this.timestamp = timestamp;
         this.msgSubType = msgSubType;
     }
 
-    public SlackMessagePosted(String messageContent, SlackBot bot, SlackUser user, SlackChannel channel, String timestamp, SlackFile slackFile, String jsonSource, MessageSubType msgSubType, String threadTimestamp) {
+    public SlackMessagePosted(String messageContent, SlackUser user, SlackChannel channel, String timestamp, SlackFile slackFile, String jsonSource, MessageSubType msgSubType, String threadTimestamp) {
         this.channel = channel;
         this.messageContent = messageContent;
         this.user = user;
-        this.bot = bot;
         this.timestamp = timestamp;
         this.jsonSource = jsonSource;
         this.slackFile = slackFile;
@@ -48,7 +46,7 @@ public class SlackMessagePosted implements SlackEvent {
 
     @Override
     public String toString() {
-        return "SlackMessagePosted{" + "messageContent=" + messageContent + ", user=" + user + ", bot=" + bot + ", channel=" + channel + ", timestamp=" + timestamp + ", reactions=" + reactions + '}';
+        return "SlackMessagePosted{" + "messageContent=" + messageContent + ", user=" + user + ", channel=" + channel + ", timestamp=" + timestamp + ", reactions=" + reactions + '}';
     }
 
     public String getJsonSource() {
@@ -66,10 +64,6 @@ public class SlackMessagePosted implements SlackEvent {
 
     public SlackUser getSender() {
         return user;
-    }
-
-    public SlackBot getBot() {
-        return bot;
     }
 
     public SlackChannel getChannel() {
@@ -159,8 +153,7 @@ public class SlackMessagePosted implements SlackEvent {
             return UNKNOWN;
         }
 
-        public String getCode()
-        {
+        public String getCode() {
             return code;
         }
     }

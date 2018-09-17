@@ -7,30 +7,30 @@ import java.util.Map;
 
 public class SlackAttachment {
 
-    private String              title;
-    private String              titleLink;
-    private String              fallback;
-    private String              callback_id;
-    private String              text;
-    private String              pretext;
-    private String              thumb_url;
-    private String              author_name;
-    private String              author_link;
-    private String              author_icon;
-    private String              footer;
-    private String              footer_icon;
-    private String              image_url;
+    private String title;
+    private String titleLink;
+    private String fallback;
+    private String callback_id;
+    private String text;
+    private String pretext;
+    private String thumb_url;
+    private String author_name;
+    private String author_link;
+    private String author_icon;
+    private String footer;
+    private String footer_icon;
+    private String image_url;
 
-    private String              color;
-    private Long                timestamp;
+    private String color;
+    private Long timestamp;
 
     private Map<String, String> miscRootFields;
 
-    private List<SlackField>    fields = new ArrayList<>();
+    private List<SlackField> fields = new ArrayList<>();
 
-    private List<SlackAction>   actions = new ArrayList<>();
+    private List<SlackAction> actions = new ArrayList<>();
 
-    private List<String>        markdown_in;
+    private List<String> markdown_in;
 
     public SlackAttachment() {
 
@@ -74,18 +74,15 @@ public class SlackAttachment {
         miscRootFields.put(key, value);
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setTitleLink(String titleLink)
-    {
+    public void setTitleLink(String titleLink) {
         this.titleLink = titleLink;
     }
 
-    public void setFallback(String fallback)
-    {
+    public void setFallback(String fallback) {
         this.fallback = fallback;
     }
 
@@ -93,34 +90,45 @@ public class SlackAttachment {
         this.callback_id = callback_id;
     }
 
-    public void setText(String text)
-    {
+    public void setText(String text) {
         this.text = text;
     }
 
-    public void setPretext(String pretext)
-    {
+    public void setPretext(String pretext) {
         this.pretext = pretext;
     }
 
-    public void setThumbUrl(String thumb_url) { this.thumb_url = thumb_url; }
+    public void setThumbUrl(String thumb_url) {
+        this.thumb_url = thumb_url;
+    }
 
-    public void setColor(String color)
-    {
+    public void setColor(String color) {
         this.color = color;
     }
 
-    public void setImageUrl(String image_url) { this.image_url = image_url; }
+    public void setImageUrl(String image_url) {
+        this.image_url = image_url;
+    }
 
-    public void setAuthorName(String author_name) { this.author_name = author_name; }
+    public void setAuthorName(String author_name) {
+        this.author_name = author_name;
+    }
 
-    public void setAuthorLink(String author_link) { this.author_link = author_link; }
+    public void setAuthorLink(String author_link) {
+        this.author_link = author_link;
+    }
 
-    public void setAuthorIcon(String author_icon) { this.author_icon = author_icon; }
+    public void setAuthorIcon(String author_icon) {
+        this.author_icon = author_icon;
+    }
 
-    public void setFooter(String footer) { this.footer = footer; }
+    public void setFooter(String footer) {
+        this.footer = footer;
+    }
 
-    public void setFooterIcon(String footer_icon) { this.footer_icon = footer_icon; }
+    public void setFooterIcon(String footer_icon) {
+        this.footer_icon = footer_icon;
+    }
 
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
@@ -174,17 +182,29 @@ public class SlackAttachment {
         return markdown_in;
     }
 
-    public String getImageUrl() { return image_url; }
+    public String getImageUrl() {
+        return image_url;
+    }
 
-    public String getAuthorName() { return author_name; }
+    public String getAuthorName() {
+        return author_name;
+    }
 
-    public String getAuthorLink() { return author_link; }
+    public String getAuthorLink() {
+        return author_link;
+    }
 
-    public String getAuthorIcon() { return author_icon; }
+    public String getAuthorIcon() {
+        return author_icon;
+    }
 
-    public String getFooter() { return footer; }
+    public String getFooter() {
+        return footer;
+    }
 
-    public String getFooterIcon() { return footer_icon; }
+    public String getFooterIcon() {
+        return footer_icon;
+    }
 
     public Long getTimestamp() {
         return timestamp;

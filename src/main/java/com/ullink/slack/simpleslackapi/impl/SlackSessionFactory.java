@@ -1,15 +1,14 @@
 package com.ullink.slack.simpleslackapi.impl;
 
-import java.net.Proxy;
-import java.util.concurrent.TimeUnit;
-
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.WebSocketContainerProvider;
 
+import java.net.Proxy;
+import java.util.concurrent.TimeUnit;
+
 public class SlackSessionFactory {
-    public static SlackSession createWebSocketSlackSession(String authToken)
-    {
-    	return new SlackWebSocketSessionImpl(null,authToken, true, true, 0, null);
+    public static SlackSession createWebSocketSlackSession(String authToken) {
+        return new SlackWebSocketSessionImpl(null, authToken, true, true, 0, null);
     }
 
     public static SlackSessionFactoryBuilder getSlackSessionBuilder(String authToken) {

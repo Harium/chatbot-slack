@@ -3,10 +3,10 @@ package com.ullink.slack.simpleslackapi.impl;
 import com.ullink.slack.simpleslackapi.SlackPersona;
 
 class SlackPersonaImpl implements SlackPersona {
-    final String  id;
-    final String  userName;
-    final String  realName;
-    final String  userMail;
+    final String id;
+    final String userName;
+    final String realName;
+    final String userMail;
     final String userSkype;
     final String userPhone;
     final String userTitle;
@@ -47,62 +47,52 @@ class SlackPersonaImpl implements SlackPersona {
     }
 
     @Override
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
     @Override
-    public String getUserName()
-    {
+    public String getUserName() {
         return userName;
     }
 
     @Override
-    public boolean isDeleted()
-    {
+    public boolean isDeleted() {
         return deleted;
     }
 
     @Override
-    public boolean isAdmin()
-    {
+    public boolean isAdmin() {
         return admin;
     }
 
     @Override
-    public boolean isOwner()
-    {
+    public boolean isOwner() {
         return owner;
     }
 
     @Override
-    public boolean isPrimaryOwner()
-    {
+    public boolean isPrimaryOwner() {
         return primaryOwner;
     }
 
     @Override
-    public boolean isRestricted()
-    {
+    public boolean isRestricted() {
         return restricted;
     }
 
     @Override
-    public boolean isUltraRestricted()
-    {
+    public boolean isUltraRestricted() {
         return ultraRestricted;
     }
 
     @Override
-    public boolean isBot()
-    {
+    public boolean isBot() {
         return bot;
     }
 
     @Override
-    public String getUserMail()
-    {
+    public String getUserMail() {
         return userMail;
     }
 
@@ -122,26 +112,22 @@ class SlackPersonaImpl implements SlackPersona {
     }
 
     @Override
-    public String getRealName()
-    {
+    public String getRealName() {
         return realName;
     }
 
     @Override
-    public String getTimeZone()
-    {
+    public String getTimeZone() {
         return timeZone;
     }
 
     @Override
-    public String getTimeZoneLabel()
-    {
+    public String getTimeZoneLabel() {
         return timeZoneLabel;
     }
 
     @Override
-    public Integer getTimeZoneOffset()
-    {
+    public Integer getTimeZoneOffset() {
         return timeZoneOffset;
     }
 

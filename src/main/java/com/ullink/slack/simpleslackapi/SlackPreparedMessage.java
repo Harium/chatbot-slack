@@ -25,7 +25,7 @@ public class SlackPreparedMessage {
         this.replyBroadcast = replyBroadcast;
     }
 
-    public SlackPreparedMessage(){
+    public SlackPreparedMessage() {
 
     }
 
@@ -81,16 +81,14 @@ public class SlackPreparedMessage {
         }
 
         public Builder addAttachment(SlackAttachment attachment) {
-            if (attachment != null)
-            {
+            if (attachment != null) {
                 this.attachments.add(attachment);
             }
             return this;
         }
 
         public Builder addAttachments(List<SlackAttachment> attachments) {
-            if (attachments != null)
-            {
+            if (attachments != null) {
                 this.attachments.addAll(attachments);
             }
             return this;

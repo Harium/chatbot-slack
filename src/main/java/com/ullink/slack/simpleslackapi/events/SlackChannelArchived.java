@@ -1,7 +1,7 @@
 package com.ullink.slack.simpleslackapi.events;
 
-import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.SlackChannel;
+import com.ullink.slack.simpleslackapi.SlackUser;
 
 public class SlackChannelArchived implements SlackEvent {
     private SlackChannel slackChannel;
@@ -12,14 +12,12 @@ public class SlackChannelArchived implements SlackEvent {
         this.slackUser = slackUser;
     }
 
-    public SlackUser getUser()
-    {
+    public SlackUser getUser() {
         return slackUser;
     }
 
     @Override
-    public SlackEventType getEventType()
-    {
+    public SlackEventType getEventType() {
         return SlackEventType.SLACK_CHANNEL_ARCHIVED;
     }
 

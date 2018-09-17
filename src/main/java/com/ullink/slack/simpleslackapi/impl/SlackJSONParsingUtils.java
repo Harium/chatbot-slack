@@ -1,11 +1,11 @@
 package com.ullink.slack.simpleslackapi.impl;
 
-import java.util.Map;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.ullink.slack.simpleslackapi.*;
+
+import java.util.Map;
 
 class SlackJSONParsingUtils {
 
@@ -13,8 +13,7 @@ class SlackJSONParsingUtils {
         // Helper class
     }
 
-    static final SlackUser buildSlackUser(JsonObject jsonUser)
-    {
+    static final SlackUser buildSlackUser(JsonObject jsonUser) {
         String id = GsonHelper.getStringOrNull(jsonUser.get("id"));
         String name = GsonHelper.getStringOrNull(jsonUser.get("name"));
         String realName = GsonHelper.getStringOrNull(jsonUser.get("real_name"));
@@ -22,8 +21,7 @@ class SlackJSONParsingUtils {
         String tzLabel = GsonHelper.getStringOrNull(jsonUser.get("tz_label"));
         JsonElement element = jsonUser.get("tz_offset");
         Integer tzOffset = null;
-        if (element != null)
-        {
+        if (element != null) {
             tzOffset = element.getAsInt();
         }
         Boolean deleted = GsonHelper.ifNullFalse(jsonUser.get("deleted"));
@@ -39,8 +37,7 @@ class SlackJSONParsingUtils {
         String title = "";
         String phone = "";
         String presence = "";
-        if (profileJSON !=null && !profileJSON.isJsonNull())
-        {
+        if (profileJSON != null && !profileJSON.isJsonNull()) {
             email = GsonHelper.getStringOrNull(profileJSON.get("email"));
             skype = GsonHelper.getStringOrNull(profileJSON.get("skype"));
             title = GsonHelper.getStringOrNull(profileJSON.get("title"));
@@ -48,19 +45,17 @@ class SlackJSONParsingUtils {
             presence = GsonHelper.getStringOrNull(profileJSON.get("presence"));
         }
         SlackPersona.SlackPresence slackPresence = SlackPersona.SlackPresence.UNKNOWN;
-        if ("active".equals(presence))
-        {
+        if ("active".equals(presence)) {
             slackPresence = SlackPersona.SlackPresence.ACTIVE;
         }
-        if ("away".equals(presence))
-        {
+        if ("away".equals(presence)) {
             slackPresence = SlackPersona.SlackPresence.AWAY;
         }
         return new SlackUserImpl(id, name, realName, email, skype, title, phone, deleted, admin, owner, primaryOwner, restricted, ultraRestricted, bot, tz, tzLabel, tzOffset, slackPresence);
     }
 
     static final SlackChannel buildSlackChannel(JsonObject jsonChannel, Map<String, SlackUser> knownUsersById) {
-        String id =  GsonHelper.getStringOrNull(jsonChannel.get("id"));
+        String id = GsonHelper.getStringOrNull(jsonChannel.get("id"));
         String name = GsonHelper.getStringOrNull(jsonChannel.get("name"));
 
         String topic = null;
@@ -95,8 +90,7 @@ class SlackJSONParsingUtils {
         return toReturn;
     }
 
-    static final SlackChannel buildSlackImChannel(JsonObject jsonChannel, Map<String, SlackUser> knownUsersById)
-    {
+    static final SlackChannel buildSlackImChannel(JsonObject jsonChannel, Map<String, SlackUser> knownUsersById) {
         String id = GsonHelper.getStringOrNull(jsonChannel.get("id"));
         SlackChannel toReturn = new SlackChannel(id, null, null, null, true, false, false);
         String memberId = GsonHelper.getStringOrNull(jsonChannel.get("user"));
@@ -105,8 +99,7 @@ class SlackJSONParsingUtils {
         return toReturn;
     }
 
-    static final SlackTeam buildSlackTeam(JsonObject jsonTeam)
-    {
+    static final SlackTeam buildSlackTeam(JsonObject jsonTeam) {
         String id = GsonHelper.getStringOrNull(jsonTeam.get("id"));
         String name = GsonHelper.getStringOrNull(jsonTeam.get("name"));
         String domain = GsonHelper.getStringOrNull(jsonTeam.get("domain"));
@@ -116,7 +109,7 @@ class SlackJSONParsingUtils {
     static final SlackIntegration buildSlackIntegration(JsonObject jsonIntegration) {
         String id = GsonHelper.getStringOrNull(jsonIntegration.get("id"));
         String name = GsonHelper.getStringOrNull(jsonIntegration.get("name"));
-        boolean deleted = GsonHelper.getBooleanOrDefaultValue(jsonIntegration.get("deleted"),false);
+        boolean deleted = GsonHelper.getBooleanOrDefaultValue(jsonIntegration.get("deleted"), false);
         return new SlackIntegrationImpl(id, name, deleted);
     }
 }

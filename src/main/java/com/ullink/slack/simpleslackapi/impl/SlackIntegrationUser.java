@@ -3,8 +3,7 @@ package com.ullink.slack.simpleslackapi.impl;
 import com.ullink.slack.simpleslackapi.SlackIntegration;
 import com.ullink.slack.simpleslackapi.SlackUser;
 
-class SlackIntegrationUser implements SlackIntegration, SlackUser
-{
+class SlackIntegrationUser implements SlackIntegration, SlackUser {
     private SlackIntegration integration;
 
     SlackIntegrationUser(SlackIntegration integration) {
@@ -12,116 +11,97 @@ class SlackIntegrationUser implements SlackIntegration, SlackUser
     }
 
     @Override
-    public String getId()
-    {
+    public String getId() {
         return integration.getId();
     }
 
     @Override
-    public String getUserName()
-    {
+    public String getUserName() {
         return integration.getName();
     }
 
     @Override
-    public String getRealName()
-    {
+    public String getRealName() {
         return integration.getName();
     }
 
     @Override
-    public String getUserMail()
-    {
+    public String getUserMail() {
         return null;
     }
 
     @Override
-    public String getUserSkype()
-    {
+    public String getUserSkype() {
         return null;
     }
 
     @Override
-    public String getUserPhone()
-    {
+    public String getUserPhone() {
         return null;
     }
 
     @Override
-    public String getUserTitle()
-    {
+    public String getUserTitle() {
         return null;
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return integration.getName();
     }
 
     @Override
-    public boolean isDeleted()
-    {
+    public boolean isDeleted() {
         return integration.isDeleted();
     }
 
     @Override
-    public boolean isAdmin()
-    {
+    public boolean isAdmin() {
         return false;
     }
 
     @Override
-    public boolean isOwner()
-    {
+    public boolean isOwner() {
         return false;
     }
 
     @Override
-    public boolean isPrimaryOwner()
-    {
+    public boolean isPrimaryOwner() {
         return false;
     }
 
     @Override
-    public boolean isRestricted()
-    {
+    public boolean isRestricted() {
         return false;
     }
 
     @Override
-    public boolean isUltraRestricted()
-    {
+    public boolean isUltraRestricted() {
         return false;
     }
 
     @Override
-    public boolean isBot()
-    {
+    public boolean isBot() {
         return true;
     }
 
     @Override
-    public String getTimeZone()
-    {
+    public String getTimeZone() {
         return null;
     }
 
     @Override
-    public String getTimeZoneLabel()
-    {
+    public String getTimeZoneLabel() {
         return null;
     }
 
     @Override
-    public Integer getTimeZoneOffset()
-    {
+    public Integer getTimeZoneOffset() {
         return null;
     }
 
     @Override
-    public SlackPresence getPresence()
-    {
+    public SlackPresence getPresence() {
         return SlackPresence.UNKNOWN;
     }
 }

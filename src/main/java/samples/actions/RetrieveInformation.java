@@ -1,4 +1,4 @@
-package actions;
+package samples.actions;
 
 import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackMessageHandle;

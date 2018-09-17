@@ -5,21 +5,18 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.ullink.slack.simpleslackapi.SlackUser;
-
 //TODO: a domain object
 public class SlackChannel {
     private final boolean direct;
-    private String         id;
-    private String         name;
+    private String id;
+    private String name;
     private Set<SlackUser> members = new HashSet<>();
-    private String         topic;
-    private String         purpose;
-    private boolean        isMember;
-    private boolean        isArchived;
+    private String topic;
+    private String purpose;
+    private boolean isMember;
+    private boolean isArchived;
 
-    public SlackChannel(String id, String name, String topic, String purpose, boolean direct, boolean isMember, boolean isArchived)
-    {
+    public SlackChannel(String id, String name, String topic, String purpose, boolean direct, boolean isMember, boolean isArchived) {
         this.id = id;
         this.name = name;
         this.topic = topic;
@@ -29,33 +26,27 @@ public class SlackChannel {
         this.isArchived = isArchived;
     }
 
-    public void addUser(SlackUser user)
-    {
+    public void addUser(SlackUser user) {
         members.add(user);
     }
 
-    void removeUser(SlackUser user)
-    {
+    void removeUser(SlackUser user) {
         members.remove(user);
     }
 
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public Collection<SlackUser> getMembers()
-    {
+    public Collection<SlackUser> getMembers() {
         return new ArrayList<>(members);
     }
 
-    public String getTopic()
-    {
+    public String getTopic() {
         return topic;
     }
 
@@ -69,8 +60,7 @@ public class SlackChannel {
                 '}';
     }
 
-    public String getPurpose()
-    {
+    public String getPurpose() {
         return purpose;
     }
 
@@ -86,8 +76,7 @@ public class SlackChannel {
         return isArchived;
     }
 
-    public SlackChannelType getType()
-    {
+    public SlackChannelType getType() {
         //that's a bit hacky
         if (isDirect()) {
             return SlackChannelType.INSTANT_MESSAGING;

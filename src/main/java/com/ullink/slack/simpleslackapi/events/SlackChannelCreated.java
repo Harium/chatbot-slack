@@ -1,7 +1,7 @@
 package com.ullink.slack.simpleslackapi.events;
 
-import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.SlackChannel;
+import com.ullink.slack.simpleslackapi.SlackUser;
 
 public class SlackChannelCreated implements SlackEvent {
     private SlackChannel slackChannel;
@@ -12,8 +12,7 @@ public class SlackChannelCreated implements SlackEvent {
         this.slackUser = slackUser;
     }
 
-    public SlackUser getCreator()
-    {
+    public SlackUser getCreator() {
         return slackUser;
     }
 

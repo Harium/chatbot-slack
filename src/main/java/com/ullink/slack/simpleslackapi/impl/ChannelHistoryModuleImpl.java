@@ -1,30 +1,26 @@
 package com.ullink.slack.simpleslackapi.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ullink.slack.simpleslackapi.ChannelHistoryModule;
 import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackMessageHandle;
+import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.events.ReactionAdded;
 import com.ullink.slack.simpleslackapi.events.ReactionRemoved;
 import com.ullink.slack.simpleslackapi.events.SlackMessagePosted;
+import com.ullink.slack.simpleslackapi.listeners.ReactionAddedListener;
+import com.ullink.slack.simpleslackapi.listeners.ReactionRemovedListener;
+import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
 import com.ullink.slack.simpleslackapi.replies.GenericSlackReply;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
 import org.threeten.bp.temporal.ChronoUnit;
-import com.ullink.slack.simpleslackapi.ChannelHistoryModule;
-import com.ullink.slack.simpleslackapi.SlackSession;
-import com.ullink.slack.simpleslackapi.listeners.ReactionAddedListener;
-import com.ullink.slack.simpleslackapi.listeners.ReactionRemovedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
+
+import java.util.*;
 
 public class ChannelHistoryModuleImpl implements ChannelHistoryModule {
 
@@ -49,16 +45,16 @@ public class ChannelHistoryModuleImpl implements ChannelHistoryModule {
         List<SlackMessagePosted> retrievedList;
         switch (channel.getType()) {
             case INSTANT_MESSAGING:
-                retrievedList = fetchHistoryOfChannel(params,FETCH_IM_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
+                retrievedList = fetchHistoryOfChannel(params, FETCH_IM_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
                 break;
             case PRIVATE_GROUP:
-                retrievedList = fetchHistoryOfChannel(params,FETCH_GROUP_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
+                retrievedList = fetchHistoryOfChannel(params, FETCH_GROUP_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
                 break;
             default:
-                retrievedList = fetchHistoryOfChannel(params,FETCH_CHANNEL_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
+                retrievedList = fetchHistoryOfChannel(params, FETCH_CHANNEL_HISTORY_COMMAND, MessageSubTypeFilter.USERS_AND_INTERNAL_MESSAGES.getRetainedSubtypes());
                 break;
         }
-        if (retrievedList != null && retrievedList.size()>0) {
+        if (retrievedList != null && retrievedList.size() > 0) {
             return retrievedList.get(0);
         }
         return null;
@@ -107,11 +103,11 @@ public class ChannelHistoryModuleImpl implements ChannelHistoryModule {
         SlackChannel channel = session.findChannelById(channelId);
         switch (channel.getType()) {
             case INSTANT_MESSAGING:
-                return fetchHistoryOfChannel(params,FETCH_IM_HISTORY_COMMAND, allowedSubtypes);
+                return fetchHistoryOfChannel(params, FETCH_IM_HISTORY_COMMAND, allowedSubtypes);
             case PRIVATE_GROUP:
-                return fetchHistoryOfChannel(params,FETCH_GROUP_HISTORY_COMMAND, allowedSubtypes);
+                return fetchHistoryOfChannel(params, FETCH_GROUP_HISTORY_COMMAND, allowedSubtypes);
             default:
-                return fetchHistoryOfChannel(params,FETCH_CHANNEL_HISTORY_COMMAND, allowedSubtypes);
+                return fetchHistoryOfChannel(params, FETCH_CHANNEL_HISTORY_COMMAND, allowedSubtypes);
         }
     }
 
@@ -181,7 +177,9 @@ public class ChannelHistoryModuleImpl implements ChannelHistoryModule {
                 message.getReactions().put(emojiName, 1);
             }
         }
-    };
+    }
+
+    ;
 
     public static class ChannelHistoryReactionRemovedListener implements ReactionRemovedListener {
 

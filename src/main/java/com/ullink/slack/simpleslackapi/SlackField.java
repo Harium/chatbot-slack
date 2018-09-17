@@ -1,8 +1,8 @@
 package com.ullink.slack.simpleslackapi;
 
 public class SlackField {
-    private String  title;
-    private String  value;
+    private String title;
+    private String value;
     private boolean isShort;
 
     public SlackField() {

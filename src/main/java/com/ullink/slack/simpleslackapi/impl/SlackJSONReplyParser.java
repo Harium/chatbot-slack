@@ -2,31 +2,27 @@ package com.ullink.slack.simpleslackapi.impl;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.ullink.slack.simpleslackapi.replies.*;
 import com.ullink.slack.simpleslackapi.SlackSession;
+import com.ullink.slack.simpleslackapi.replies.*;
 
-class SlackJSONReplyParser
-{
-    static ParsedSlackReply decode(JsonObject obj, SlackSession session)
-    {
+class SlackJSONReplyParser {
+    static ParsedSlackReply decode(JsonObject obj, SlackSession session) {
         Boolean ok = obj.get("ok").getAsBoolean();
         String error = null;
-        if (obj.get("error") != null)
-        {
+        if (obj.get("error") != null) {
             error = obj.get("error").getAsString();
         }
-        if (obj.get("presence") != null)
-        {
-            return new SlackUserPresenceReply(ok, error,"active".equals(obj.get("presence").getAsString()));
+        if (obj.get("presence") != null) {
+            return new SlackUserPresenceReply(ok, error, "active".equals(obj.get("presence").getAsString()));
         }
 
         if (isMpim(obj) || isIm(obj) || isChannel(obj) || isGroup(obj)) {
-            return buildSlackChannelReply(ok,error,obj,session);
+            return buildSlackChannelReply(ok, error, obj, session);
         }
 
-        if(isMessageReply(obj)) {
+        if (isMessageReply(obj)) {
             String timestamp = GsonHelper.getStringOrNull(obj.get("ts"));
-            return new SlackMessageReply(ok, error, GsonHelper.getLongOrDefaultValue(obj.get("reply_to"),-1l), timestamp);
+            return new SlackMessageReply(ok, error, GsonHelper.getLongOrDefaultValue(obj.get("reply_to"), -1l), timestamp);
         }
 
         if (isEmojiReply(obj)) {
@@ -38,12 +34,12 @@ class SlackJSONReplyParser
             //smelly reply
             ok = Boolean.FALSE;
         }
-        return new SlackReplyImpl(ok,error);
+        return new SlackReplyImpl(ok, error);
     }
 
     private static SlackChannelReply buildSlackChannelReply(Boolean ok, String error, JsonObject obj, SlackSession session) {
         if (obj.get("id") != null) {
-            return new SlackChannelReply(ok,error, session.findChannelById(obj.get("id").getAsString()));
+            return new SlackChannelReply(ok, error, session.findChannelById(obj.get("id").getAsString()));
         }
 
         JsonElement channelObj = obj.get("channel");
@@ -52,20 +48,19 @@ class SlackJSONReplyParser
         }
 
         String id = channelObj.getAsJsonObject().get("id").getAsString();
-        return new SlackChannelReply(ok,error, session.findChannelById(id));
+        return new SlackChannelReply(ok, error, session.findChannelById(id));
     }
 
-    private static boolean isMessageReply(JsonObject obj)
-    {
+    private static boolean isMessageReply(JsonObject obj) {
         return obj.get("ts") != null;
     }
-    
+
     private static boolean isMpim(JsonObject obj) {
-        return GsonHelper.getBooleanOrDefaultValue(obj.get("is_mpim"),false);
+        return GsonHelper.getBooleanOrDefaultValue(obj.get("is_mpim"), false);
     }
 
     private static boolean isIm(JsonObject obj) {
-        return GsonHelper.getBooleanOrDefaultValue(obj.get("is_im"),false);
+        return GsonHelper.getBooleanOrDefaultValue(obj.get("is_im"), false);
     }
 
     private static boolean isChannel(JsonObject obj) {
@@ -73,8 +68,7 @@ class SlackJSONReplyParser
         return channel != null && channel.isJsonObject();
     }
 
-    private static boolean isGroup(JsonObject obj)
-    {
+    private static boolean isGroup(JsonObject obj) {
         if (obj.get("is_group") != null) {
             return obj.get("is_group").getAsBoolean();
         }
