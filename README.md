@@ -1,9 +1,8 @@
-[![Build Status](https://travis-ci.org/Ullink/simple-slack-api.svg?branch=master)](https://travis-ci.org/Ullink/simple-slack-api)
-[![GitHub release](https://img.shields.io/github/release/Ullink/simple-slack-api.svg)](https://github.com/Ullink/simple-slack-api/releases)
-[![Coverage Status](https://coveralls.io/repos/github/Ullink/simple-slack-api/badge.svg?branch=master)](https://coveralls.io/github/Ullink/simple-slack-api?branch=master)
-[![Join the chat at https://gitter.im/Ullink/simple-slack-api](https://badges.gitter.im/Ullink/simple-slack-api.svg)](https://gitter.im/Ullink/simple-slack-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/Harium/slack.svg?branch=master)](https://travis-ci.org/Harium/slack)
 
-# Simple Slack API
+# Slack
+
+This library is a fork of [simple-slack-api](https://github.com/Ullink/simple-slack-api)
 
 This library allows an application to connect to [Slack](http://www.slack.com/) to receive and send messages from any channel as if it were a slack client.
 
@@ -11,18 +10,23 @@ The main purpose of this library is to build Slack bots able to react to channel
 
 With this library you should be able to connect to Slack and to send some messages in less than 20 lines (no one-liners).
 
-## Maven/Gradle
+### Maven
+```
+<dependency>
+    <groupId>com.harium.chatbot</groupId>
+    <artifactId>slack</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
-You can add this library as a dependency to your Maven or Gradle project through [JitPack](https://jitpack.io/#Ullink/simple-slack-api).
-
-Released versions are also availables on the maven central repository :
-
-* *group id:* com.ullink.slack
-* *artifact id:* simpleslackapi
+### Gradle
+```
+compile 'com.harium.chatbot:slack:1.0.0'
+```
 
 ## How to use it ?
 
-You can find some samples of the most common use cases in the [samples](https://github.com/Ullink/simple-slack-api/tree/master/samples) folder.
+You can find some samples of the most common use cases in the [samples](https://github.com/Harium/slack-samples/tree/master/samples) folder.
 
 Sample code
 
@@ -101,5 +105,4 @@ Many thanks to everyone who has contributed to this library :
 (Let me know if I forgot someone, I'll fix that ASAP ;) )
 
 # License
-
-This library is licensed under the [Creative Commons CC0 1.0 Universal](http://creativecommons.org/publicdomain/zero/1.0/) license with no warranty (expressed or implied) for any purpose.
+- [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html)
