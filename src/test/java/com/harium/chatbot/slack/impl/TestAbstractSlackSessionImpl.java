@@ -87,6 +87,16 @@ public class TestAbstractSlackSessionImpl
         }
 
         @Override
+        public SlackMessageHandle<SlackMessageReply> sharePublicFile(String fileId) {
+            return null;
+        }
+
+        @Override
+        public SlackMessageHandle<SlackMessageReply> revokePublicFile(String fileId) {
+            return null;
+        }
+
+        @Override
         public SlackMessageHandle<SlackMessageReply> sendFileToUser(SlackUser user, byte[] data, String fileName)
         {
             return null;

@@ -140,6 +140,16 @@ public class TestSlackJSONMessageParser {
             }
 
             @Override
+            public SlackMessageHandle<SlackMessageReply> sharePublicFile(String fileId) {
+                return null;
+            }
+
+            @Override
+            public SlackMessageHandle<SlackMessageReply> revokePublicFile(String fileId) {
+                return null;
+            }
+
+            @Override
             public SlackMessageHandle<SlackMessageReply> sendMessageToUser(SlackUser user, SlackPreparedMessage preparedMessage) {
                 return null;
             }
