@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.harium.chatbot</groupId>
     <artifactId>slack</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
-    <name>Slack API</name>
-    <description>Slack API</description>
-    <url>http://github.com/harium/slack</url>
+    <name>Harium Slack API</name>
+    <description>Harium Slack API for RTM bots</description>
+    <url>http://github.com/harium/chatbot-slack</url>
     <scm>
-        <connection>scm:git:git://github.com/harium/slack.git</connection>
-        <developerConnection>scm:git:ssh://github.com:harium/slack.git</developerConnection>
+        <connection>scm:git:git://github.com/harium/chatbot-slack.git</connection>
+        <developerConnection>scm:git:ssh://github.com:harium/chatbot-slack.git</developerConnection>
         <url>http://github.com/harium/slack-api/tree/master</url>
     </scm>
     <licenses>
