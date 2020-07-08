@@ -75,6 +75,10 @@ class SlackWebSocketSessionImpl extends AbstractSlackSessionImpl implements Slac
 
     private static final String CHAT_POST_EPHEMERAL_COMMAND = "chat.postEphemeral";
 
+    private static final String FILE_SHARE_PUBLIC_URL = "files.sharedPublicURL";
+
+    private static final String FILE_REVOKE_PUBLIC_URL = "files.revokePublicURL";
+
     private static final String FILE_UPLOAD_COMMAND = "files.upload";
 
     private static final String CHAT_DELETE_COMMAND = "chat.delete";
@@ -598,6 +602,28 @@ class SlackWebSocketSessionImpl extends AbstractSlackSessionImpl implements Slac
         arguments.put("title", title);
         arguments.put("initial_comment", initialComment);
         postSlackCommandWithFile(arguments, data, fileName, FILE_UPLOAD_COMMAND, handle);
+        return handle;
+    }
+
+    @Override
+    public SlackMessageHandle<SlackMessageReply> sharePublicFile(String fileId) {
+        SlackMessageHandle<SlackMessageReply> handle = new SlackMessageHandle<>(getNextMessageId());
+        Map<String, String> arguments = new HashMap<>();
+        arguments.put("token", authToken);
+        arguments.put("file", fileId);
+
+        postSlackCommand(arguments, FILE_SHARE_PUBLIC_URL, handle);
+        return handle;
+    }
+
+    @Override
+    public SlackMessageHandle<SlackMessageReply> revokePublicFile(String fileId) {
+        SlackMessageHandle<SlackMessageReply> handle = new SlackMessageHandle<>(getNextMessageId());
+        Map<String, String> arguments = new HashMap<>();
+        arguments.put("token", authToken);
+        arguments.put("file", fileId);
+
+        postSlackCommand(arguments, FILE_REVOKE_PUBLIC_URL, handle);
         return handle;
     }
 

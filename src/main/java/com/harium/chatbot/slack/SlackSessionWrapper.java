@@ -210,6 +210,16 @@ public class SlackSessionWrapper implements SlackSession {
     }
 
     @Override
+    public SlackMessageHandle<SlackMessageReply> sharePublicFile(String fileId) {
+        return delegate.sharePublicFile(fileId);
+    }
+
+    @Override
+    public SlackMessageHandle<SlackMessageReply> revokePublicFile(String fileId) {
+        return delegate.revokePublicFile(fileId);
+    }
+
+    @Override
     public SlackMessageHandle<SlackMessageReply> sendMessageToUser(SlackUser user, SlackPreparedMessage preparedMessage) {
         return delegate.sendMessageToUser(user, preparedMessage);
     }
